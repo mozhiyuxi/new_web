@@ -5,4 +5,10 @@
 # @File    : test.py
 # @Software: PyCharm
 
-# push_now
+# 测试python交互redis
+
+from redis import StrictRedis
+
+sr = StrictRedis()
+sr.set("name", "laowang")
+
