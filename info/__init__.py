@@ -14,6 +14,7 @@ from config import config
 # 2. 第一app函数，生成app，将配置类传入app中
 
 # 设置变量类型, 将redis_store设置为全局变量
+
 redis_store = None  # type: StrictRedis
 db = SQLAlchemy()
 
@@ -56,6 +57,10 @@ def create_app(config_name):
 
     # 设置session保存指定位置
     Session(app)
+
+    # 添加jinja2过滤器
+    from info.utils.common import do_index_class
+    app.add_template_filter(do_index_class, "do_index_class")
 
     # 导入蓝图
     from info.modules.index import index_blu

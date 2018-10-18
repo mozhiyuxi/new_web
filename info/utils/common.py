@@ -24,3 +24,16 @@ def user_login_data(f):
         return f(*args, **kwargs)
 
     return wrapper
+
+
+# 自定义jinja2过滤器
+def do_index_class(index):
+    """设置索引012的classname"""
+    if index == 1:
+        return "first"
+    elif index == 2:
+        return "second"
+    elif index == 3:
+        return "third"
+    else:
+        return ""
