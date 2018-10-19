@@ -28,7 +28,8 @@ def news_list():
     if cid != 1:
         filter_list.append(News.category_id == cid)
 
-    paginate = News.query.filter(*filter_list).order_by(News.create_time.desc()).paginate(page=page, per_page=per_page, error_out=False)
+    paginate = News.query.filter(*filter_list).order_by(News.create_time.desc()).paginate(page=page, per_page=per_page,
+                                                                                          error_out=False)
 
     current_page = paginate.page
     total_pages = paginate.pages
@@ -43,7 +44,7 @@ def news_list():
         "news_dict_li": news_dict_list,
     }
 
-    return jsonify(error=RET.OK, errmsg="查询成功", data=data)
+    return jsonify(errno=RET.OK, errmsg="查询成功", data=data)
 
 
 @index_blu.route('/')
@@ -68,7 +69,7 @@ def index():
 
     data = {
         "user": user.to_dict() if user else None,
-        "news": news_dict_li if news_dict_li else None,
+        "rank_news": news_dict_li if news_dict_li else None,
         "category_li": category_li,
     }
 

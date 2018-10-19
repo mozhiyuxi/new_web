@@ -21,7 +21,7 @@ class Config(object):
     # Session保存配置
     SESSION_TYPE = "redis"
     # 开启session签名
-    SESSION_USE_SIGNER = True
+    SESSION_USE_SIGNER = False
     # 指定 Session 保存的 redis
     SESSION_REDIS = StrictRedis(host=REDIS_HOST, port=REDIS_PORT, db=DB)
     # 设置需要过期

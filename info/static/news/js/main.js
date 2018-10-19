@@ -185,7 +185,7 @@ $(function(){
         },
         contentType: "application/json",
         success: function (resp) {
-            if (resp.error == "0") {
+            if (resp.errno == "0") {
                 // 刷新当前界面
                 location.reload()
             } else {

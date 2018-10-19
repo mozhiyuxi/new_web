@@ -68,7 +68,7 @@ function updateNewsData() {
         'per_page': 50
     }
     $.get("/news_list", params, function (resp) {
-        if (resp.error=="0") {
+        if (resp.errno=="0") {
             // 获取请求得到的总页数
             total_page = resp.data.total_page;
             // 先清空原有数据
@@ -79,14 +79,14 @@ function updateNewsData() {
             for (var i=0;i<resp.data.news_dict_li.length;i++) {
                 var news = resp.data.news_dict_li[i]
                 var content = '<li>'
-                content += '<a href="#" class="news_pic fl"><img src="' + news.index_image_url + '?imageView2/1/w/170/h/170"></a>'
-                content += '<a href="#" class="news_title fl">' + news.title + '</a>'
-                content += '<a href="#" class="news_detail fl">' + news.digest + '</a>'
+                content += '<a href= /news/' + news.id + ' class="news_pic fl"><img src="' + news.index_image_url + '?imageView2/1/w/170/h/170"></a>'
+                content += '<a href= /news/' + news.id + ' class="news_title fl">' + news.title + '</a>'
+                content += '<a href= /news/' + news.id + ' class="news_detail fl">' + news.digest + '</a>'
                 content += '<div class="author_info fl">'
                 content += '<div class="source fl">来源：' + news.source + '</div>'
                 content += '<div class="time fl">' + news.create_time + '</div>'
                 content += '</div>'
-                content += '</li>'
+                content += '</li>';
                 $(".list_con").append(content)
             }
         }else {
